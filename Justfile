@@ -20,12 +20,12 @@ test:
 # Build the project
 build:
     @echo "Building project..."
-    # Add build commands here as the project develops
+    lake build
 
 # Clean build artifacts
 clean:
     @echo "Cleaning build artifacts..."
-    # Add clean commands here as the project develops
+    lake clean
 
 # Format code according to project standards
 format:
@@ -37,3 +37,16 @@ changelog VERSION MESSAGE:
     @echo "Updating changelog with version {{VERSION}}..."
     @sed -i '' "s/## \[Unreleased\]/## [Unreleased]\n\n## [{{VERSION}}] - $(date +%Y-%m-%d)/" CHANGELOG.md
     @sed -i '' "/## \[{{VERSION}}\]/a\\\n### Added\n- {{MESSAGE}}" CHANGELOG.md
+
+# Run Lean 4 REPL
+repl:
+    lake env lean
+
+# Create a new Lean 4 module file
+new-module NAME:
+    @echo "Creating new module {{NAME}}..."
+    @echo "/-\nNTSC Demodulator - {{NAME}} Module\n-/\n\nimport NTSCDemodulator\n\nnamespace NTSCDemodulator.{{NAME}}\n\n-- Module contents go here\n\nend NTSCDemodulator.{{NAME}}" > NTSCDemodulator/{{NAME}}.lean
+
+# Run typechecking on the codebase
+typecheck:
+    lake env lean --no-run --make NTSCDemodulator
