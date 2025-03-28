@@ -1,3 +1,6 @@
 [submodule "ntsc-demodulator"]
 	path = ntsc-demodulator
 	url = https://github.com/KaneLabs/ntsc-demodulator.git
+[submodule "external/ntsc-demodulator"]
+	path = external/ntsc-demodulator
+	url = https://github.com/KaneLabs/ntsc-demodulator
